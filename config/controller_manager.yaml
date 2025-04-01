@@ -1,0 +1,25 @@
+controller_joint_names: ['caster_joint', 'rulet_joint', 'left_joint', 'right_joint', 'rotation_joint', 'ef_joint']
+
+controller_manager:
+    ros:
+      auto_start: true
+      update_rate: 100
+
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50  
+
+rotation_controller:
+  type: position_controllers/JointPositionController
+  joint: rotation_joint
+
+prismatic_controller:
+  type: position_controllers/JointPositionController
+  joint: ef_joint
+  
+gazebo_ros_control:
+  pid_gains:
+    left_joint: {p: 1.0, i: 0.0, d: 0.0}
+    right_joint: {p: 1.0, i: 0.0, d: 0.0}
+    rotation_joint: {p: 1.0, i: 0.0, d: 0.0}  
+    ef_joint: {p: 1.0, i: 0.0, d: 0.0}  
